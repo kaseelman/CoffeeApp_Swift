@@ -8,12 +8,41 @@
 
 /* Begin PBXBuildFile section */
 		DF3547CB2BD7EB4800BB47C9 /* Coffee_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3547CA2BD7EB4800BB47C9 /* Coffee_AppApp.swift */; };
-		DF3547CD2BD7EB4800BB47C9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3547CC2BD7EB4800BB47C9 /* ContentView.swift */; };
+		DF3547CD2BD7EB4800BB47C9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3547CC2BD7EB4800BB47C9 /* MainView.swift */; };
 		DF3547CF2BD7EB4900BB47C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF3547CE2BD7EB4900BB47C9 /* Assets.xcassets */; };
 		DF3547D32BD7EB4900BB47C9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF3547D22BD7EB4900BB47C9 /* Preview Assets.xcassets */; };
 		DF3547DD2BD7EB4900BB47C9 /* Coffee_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3547DC2BD7EB4900BB47C9 /* Coffee_AppTests.swift */; };
 		DF3547E72BD7EB4900BB47C9 /* Coffee_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3547E62BD7EB4900BB47C9 /* Coffee_AppUITests.swift */; };
 		DF3547E92BD7EB4900BB47C9 /* Coffee_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3547E82BD7EB4900BB47C9 /* Coffee_AppUITestsLaunchTests.swift */; };
+		DF3547F62BD9006500BB47C9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF3547F52BD9006500BB47C9 /* GoogleService-Info.plist */; };
+		DF3547FA2BD9031E00BB47C9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = DF3547F92BD9031E00BB47C9 /* FirebaseAnalytics */; };
+		DF3547FC2BD9031E00BB47C9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = DF3547FB2BD9031E00BB47C9 /* FirebaseAuth */; };
+		DF3547FE2BD9031E00BB47C9 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = DF3547FD2BD9031E00BB47C9 /* FirebaseDatabase */; };
+		DF3548002BD9031E00BB47C9 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DF3547FF2BD9031E00BB47C9 /* FirebaseDatabaseSwift */; };
+		DF3548022BD9031E00BB47C9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = DF3548012BD9031E00BB47C9 /* FirebaseStorage */; };
+		DF3548052BD905C000BB47C9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DF3548042BD905C000BB47C9 /* FirebaseFirestore */; };
+		DF3548072BD905C000BB47C9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DF3548062BD905C000BB47C9 /* FirebaseFirestoreSwift */; };
+		DF3548102BD9099900BB47C9 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35480F2BD9099900BB47C9 /* ProfileView.swift */; };
+		DF3548142BD909B500BB47C9 /* NewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548132BD909B500BB47C9 /* NewItemView.swift */; };
+		DF3548162BD909C200BB47C9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548152BD909C200BB47C9 /* LoginView.swift */; };
+		DF3548182BD909CA00BB47C9 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548172BD909CA00BB47C9 /* RegisterView.swift */; };
+		DF35481A2BD909F300BB47C9 /* CoffeeListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548192BD909F300BB47C9 /* CoffeeListItemView.swift */; };
+		DF35481C2BD90A2100BB47C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35481B2BD90A2100BB47C9 /* User.swift */; };
+		DF35481E2BD90A2A00BB47C9 /* CoffeeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35481D2BD90A2A00BB47C9 /* CoffeeListItem.swift */; };
+		DF3548202BD90A5A00BB47C9 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35481F2BD90A5A00BB47C9 /* MainViewModel.swift */; };
+		DF3548222BD90A6100BB47C9 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548212BD90A6100BB47C9 /* ProfileViewModel.swift */; };
+		DF3548242BD90A6800BB47C9 /* CoffeeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548232BD90A6800BB47C9 /* CoffeeListViewModel.swift */; };
+		DF3548262BD90A7700BB47C9 /* NewItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548252BD90A7700BB47C9 /* NewItemViewModel.swift */; };
+		DF3548282BD90A7D00BB47C9 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548272BD90A7D00BB47C9 /* LoginViewModel.swift */; };
+		DF35482A2BD90A8700BB47C9 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548292BD90A8700BB47C9 /* RegisterViewModel.swift */; };
+		DF35482C2BD90A9000BB47C9 /* CoffeeListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35482B2BD90A9000BB47C9 /* CoffeeListItemViewModel.swift */; };
+		DF35482E2BD90FB600BB47C9 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35482D2BD90FB600BB47C9 /* HeaderView.swift */; };
+		DF3548302BD953D100BB47C9 /* CLButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35482F2BD953D100BB47C9 /* CLButton.swift */; };
+		DF3548322BDA9BF300BB47C9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548312BDA9BF300BB47C9 /* Extensions.swift */; };
+		DF3548342BDA9FA900BB47C9 /* CoffeeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548332BDA9FA900BB47C9 /* CoffeeListView.swift */; };
+		DF3548362BDC08B400BB47C9 /* CoffeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548352BDC08B400BB47C9 /* CoffeeDetailView.swift */; };
+		DF3548382BDC08C000BB47C9 /* CoffeeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3548372BDC08C000BB47C9 /* CoffeeDetailViewModel.swift */; };
+		DF35483A2BF4C45A00BB47C9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF3548392BF4C45A00BB47C9 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +65,7 @@
 /* Begin PBXFileReference section */
 		DF3547C72BD7EB4800BB47C9 /* Coffee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF3547CA2BD7EB4800BB47C9 /* Coffee_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee_AppApp.swift; sourceTree = "<group>"; };
-		DF3547CC2BD7EB4800BB47C9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DF3547CC2BD7EB4800BB47C9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DF3547CE2BD7EB4900BB47C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF3547D02BD7EB4900BB47C9 /* Coffee_App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Coffee_App.entitlements; sourceTree = "<group>"; };
 		DF3547D22BD7EB4900BB47C9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,6 +74,29 @@
 		DF3547E22BD7EB4900BB47C9 /* Coffee AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Coffee AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF3547E62BD7EB4900BB47C9 /* Coffee_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee_AppUITests.swift; sourceTree = "<group>"; };
 		DF3547E82BD7EB4900BB47C9 /* Coffee_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DF3547F52BD9006500BB47C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DF3547F72BD9006700BB47C9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DF35480F2BD9099900BB47C9 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		DF3548132BD909B500BB47C9 /* NewItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemView.swift; sourceTree = "<group>"; };
+		DF3548152BD909C200BB47C9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DF3548172BD909CA00BB47C9 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		DF3548192BD909F300BB47C9 /* CoffeeListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListItemView.swift; sourceTree = "<group>"; };
+		DF35481B2BD90A2100BB47C9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DF35481D2BD90A2A00BB47C9 /* CoffeeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListItem.swift; sourceTree = "<group>"; };
+		DF35481F2BD90A5A00BB47C9 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		DF3548212BD90A6100BB47C9 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		DF3548232BD90A6800BB47C9 /* CoffeeListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListViewModel.swift; sourceTree = "<group>"; };
+		DF3548252BD90A7700BB47C9 /* NewItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemViewModel.swift; sourceTree = "<group>"; };
+		DF3548272BD90A7D00BB47C9 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		DF3548292BD90A8700BB47C9 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		DF35482B2BD90A9000BB47C9 /* CoffeeListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListItemViewModel.swift; sourceTree = "<group>"; };
+		DF35482D2BD90FB600BB47C9 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		DF35482F2BD953D100BB47C9 /* CLButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLButton.swift; sourceTree = "<group>"; };
+		DF3548312BDA9BF300BB47C9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		DF3548332BDA9FA900BB47C9 /* CoffeeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListView.swift; sourceTree = "<group>"; };
+		DF3548352BDC08B400BB47C9 /* CoffeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDetailView.swift; sourceTree = "<group>"; };
+		DF3548372BDC08C000BB47C9 /* CoffeeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDetailViewModel.swift; sourceTree = "<group>"; };
+		DF3548392BF4C45A00BB47C9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +104,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF3548002BD9031E00BB47C9 /* FirebaseDatabaseSwift in Frameworks */,
+				DF3547FE2BD9031E00BB47C9 /* FirebaseDatabase in Frameworks */,
+				DF3547FA2BD9031E00BB47C9 /* FirebaseAnalytics in Frameworks */,
+				DF3548072BD905C000BB47C9 /* FirebaseFirestoreSwift in Frameworks */,
+				DF3548022BD9031E00BB47C9 /* FirebaseStorage in Frameworks */,
+				DF3547FC2BD9031E00BB47C9 /* FirebaseAuth in Frameworks */,
+				DF3548052BD905C000BB47C9 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +138,7 @@
 				DF3547DB2BD7EB4900BB47C9 /* Coffee AppTests */,
 				DF3547E52BD7EB4900BB47C9 /* Coffee AppUITests */,
 				DF3547C82BD7EB4800BB47C9 /* Products */,
+				DF3548032BD905C000BB47C9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,10 +155,12 @@
 		DF3547C92BD7EB4800BB47C9 /* Coffee App */ = {
 			isa = PBXGroup;
 			children = (
-				DF3547CA2BD7EB4800BB47C9 /* Coffee_AppApp.swift */,
-				DF3547CC2BD7EB4800BB47C9 /* ContentView.swift */,
-				DF3547CE2BD7EB4900BB47C9 /* Assets.xcassets */,
 				DF3547D02BD7EB4900BB47C9 /* Coffee_App.entitlements */,
+				DF3547F72BD9006700BB47C9 /* GoogleService-Info.plist */,
+				DF35480B2BD9071200BB47C9 /* Other */,
+				DF35480A2BD906E300BB47C9 /* Models */,
+				DF3548092BD906CE00BB47C9 /* ViewModels */,
+				DF3548082BD906C700BB47C9 /* Views */,
 				DF3547D12BD7EB4900BB47C9 /* Preview Content */,
 			);
 			path = "Coffee App";
@@ -107,6 +169,7 @@
 		DF3547D12BD7EB4900BB47C9 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				DF3547F52BD9006500BB47C9 /* GoogleService-Info.plist */,
 				DF3547D22BD7EB4900BB47C9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -129,6 +192,65 @@
 			path = "Coffee AppUITests";
 			sourceTree = "<group>";
 		};
+		DF3548032BD905C000BB47C9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF3548082BD906C700BB47C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DF3547CC2BD7EB4800BB47C9 /* MainView.swift */,
+				DF35480F2BD9099900BB47C9 /* ProfileView.swift */,
+				DF3548152BD909C200BB47C9 /* LoginView.swift */,
+				DF3548172BD909CA00BB47C9 /* RegisterView.swift */,
+				DF35482D2BD90FB600BB47C9 /* HeaderView.swift */,
+				DF35482F2BD953D100BB47C9 /* CLButton.swift */,
+				DF3548132BD909B500BB47C9 /* NewItemView.swift */,
+				DF3548192BD909F300BB47C9 /* CoffeeListItemView.swift */,
+				DF3548332BDA9FA900BB47C9 /* CoffeeListView.swift */,
+				DF3548352BDC08B400BB47C9 /* CoffeeDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DF3548092BD906CE00BB47C9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DF35481F2BD90A5A00BB47C9 /* MainViewModel.swift */,
+				DF3548212BD90A6100BB47C9 /* ProfileViewModel.swift */,
+				DF3548252BD90A7700BB47C9 /* NewItemViewModel.swift */,
+				DF3548272BD90A7D00BB47C9 /* LoginViewModel.swift */,
+				DF3548292BD90A8700BB47C9 /* RegisterViewModel.swift */,
+				DF3548232BD90A6800BB47C9 /* CoffeeListViewModel.swift */,
+				DF35482B2BD90A9000BB47C9 /* CoffeeListItemViewModel.swift */,
+				DF3548372BDC08C000BB47C9 /* CoffeeDetailViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DF35480A2BD906E300BB47C9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DF35481B2BD90A2100BB47C9 /* User.swift */,
+				DF35481D2BD90A2A00BB47C9 /* CoffeeListItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DF35480B2BD9071200BB47C9 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				DF3547CE2BD7EB4900BB47C9 /* Assets.xcassets */,
+				DF3547CA2BD7EB4800BB47C9 /* Coffee_AppApp.swift */,
+				DF3548312BDA9BF300BB47C9 /* Extensions.swift */,
+				DF3548392BF4C45A00BB47C9 /* Launch Screen.storyboard */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +267,15 @@
 			dependencies = (
 			);
 			name = "Coffee App";
+			packageProductDependencies = (
+				DF3547F92BD9031E00BB47C9 /* FirebaseAnalytics */,
+				DF3547FB2BD9031E00BB47C9 /* FirebaseAuth */,
+				DF3547FD2BD9031E00BB47C9 /* FirebaseDatabase */,
+				DF3547FF2BD9031E00BB47C9 /* FirebaseDatabaseSwift */,
+				DF3548012BD9031E00BB47C9 /* FirebaseStorage */,
+				DF3548042BD905C000BB47C9 /* FirebaseFirestore */,
+				DF3548062BD905C000BB47C9 /* FirebaseFirestoreSwift */,
+			);
 			productName = "Coffee App";
 			productReference = DF3547C72BD7EB4800BB47C9 /* Coffee App.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +348,9 @@
 				Base,
 			);
 			mainGroup = DF3547BE2BD7EB4800BB47C9;
+			packageReferences = (
+				DF3547F82BD9031E00BB47C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = DF3547C82BD7EB4800BB47C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -235,6 +369,8 @@
 			files = (
 				DF3547D32BD7EB4900BB47C9 /* Preview Assets.xcassets in Resources */,
 				DF3547CF2BD7EB4900BB47C9 /* Assets.xcassets in Resources */,
+				DF35483A2BF4C45A00BB47C9 /* Launch Screen.storyboard in Resources */,
+				DF3547F62BD9006500BB47C9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +395,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF3547CD2BD7EB4800BB47C9 /* ContentView.swift in Sources */,
+				DF35482C2BD90A9000BB47C9 /* CoffeeListItemViewModel.swift in Sources */,
+				DF35482E2BD90FB600BB47C9 /* HeaderView.swift in Sources */,
+				DF35481E2BD90A2A00BB47C9 /* CoffeeListItem.swift in Sources */,
+				DF3548162BD909C200BB47C9 /* LoginView.swift in Sources */,
+				DF3548302BD953D100BB47C9 /* CLButton.swift in Sources */,
+				DF3548382BDC08C000BB47C9 /* CoffeeDetailViewModel.swift in Sources */,
+				DF35481A2BD909F300BB47C9 /* CoffeeListItemView.swift in Sources */,
+				DF3548342BDA9FA900BB47C9 /* CoffeeListView.swift in Sources */,
+				DF35482A2BD90A8700BB47C9 /* RegisterViewModel.swift in Sources */,
+				DF3547CD2BD7EB4800BB47C9 /* MainView.swift in Sources */,
+				DF3548102BD9099900BB47C9 /* ProfileView.swift in Sources */,
+				DF3548182BD909CA00BB47C9 /* RegisterView.swift in Sources */,
+				DF3548242BD90A6800BB47C9 /* CoffeeListViewModel.swift in Sources */,
+				DF3548222BD90A6100BB47C9 /* ProfileViewModel.swift in Sources */,
+				DF3548282BD90A7D00BB47C9 /* LoginViewModel.swift in Sources */,
+				DF3548262BD90A7700BB47C9 /* NewItemViewModel.swift in Sources */,
+				DF35481C2BD90A2100BB47C9 /* User.swift in Sources */,
+				DF3548322BDA9BF300BB47C9 /* Extensions.swift in Sources */,
 				DF3547CB2BD7EB4800BB47C9 /* Coffee_AppApp.swift in Sources */,
+				DF3548362BDC08B400BB47C9 /* CoffeeDetailView.swift in Sources */,
+				DF3548142BD909B500BB47C9 /* NewItemView.swift in Sources */,
+				DF3548202BD90A5A00BB47C9 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +568,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Coffee App/Coffee_App.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Coffee App/Preview Content\"";
@@ -423,6 +580,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -448,6 +606,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Coffee App/Coffee_App.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Coffee App/Preview Content\"";
@@ -459,6 +618,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -604,6 +764,55 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DF3547F82BD9031E00BB47C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DF3547F92BD9031E00BB47C9 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3547F82BD9031E00BB47C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		DF3547FB2BD9031E00BB47C9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3547F82BD9031E00BB47C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		DF3547FD2BD9031E00BB47C9 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3547F82BD9031E00BB47C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		DF3547FF2BD9031E00BB47C9 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3547F82BD9031E00BB47C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		DF3548012BD9031E00BB47C9 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3547F82BD9031E00BB47C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		DF3548042BD905C000BB47C9 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3547F82BD9031E00BB47C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		DF3548062BD905C000BB47C9 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DF3547F82BD9031E00BB47C9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DF3547BF2BD7EB4800BB47C9 /* Project object */;
 }
