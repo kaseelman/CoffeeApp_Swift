@@ -1,11 +1,5 @@
-//
-//  HeaderView.swift
-//  Coffee App
-//
-//  Created by Kas Eelman on 24/04/2024.
-//
-
 import SwiftUI
+import UIKit
 
 struct HeaderView: View {
     

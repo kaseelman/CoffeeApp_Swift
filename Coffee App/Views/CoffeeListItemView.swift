@@ -11,33 +11,27 @@ struct CoffeeListItemView: View {
     let item: CoffeeListItem
     
     var body: some View {
-        HStack{
-            VStack (alignment: .leading){
+        HStack {
+            VStack(alignment: .leading) {
                 Text(item.title)
                     .bold()
                 Text("\(Date(timeIntervalSince1970: item.openDate).formatted(date: .abbreviated, time: .shortened))")
                     .font(.footnote)
-                    .foregroundColor(Color(.secondaryLabel))
+                    .foregroundColor(.secondary)
             }
             
             Spacer()
             
             Button {
-                
+                // Action
             } label: {
-                ZStack{
-                   // RoundedRectangle(cornerRadius: 40)
-                       // .foregroundColor(.blue)
-                    Text("Show Brew Details")
-                        .foregroundColor(Color.blue)
-                        .bold()
-                        .font(.system(size:14))
-
-                }
+                Text("Show Brew Details")
+                    .foregroundColor(.blue)
+                    .bold()
+                    .font(.system(size: 14))
             }
         }
         .padding()
-        
     }
 }
 
