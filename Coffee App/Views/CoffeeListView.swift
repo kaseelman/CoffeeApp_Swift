@@ -1,75 +1,74 @@
-//
-//  CoffeeListView.swift
-//  Coffee App
-//
-//  Created by Kas Eelman on 25/04/2024.
-//
-
 import SwiftUI
 import FirebaseFirestoreSwift
 
 struct CoffeeListView: View {
-    
     @StateObject var viewModel: CoffeeListViewModel
     @FirestoreQuery var items: [CoffeeListItem]
     
-    
     init(userId: String) {
-        //path for data in db used for list view users/<id>/coffees/<entries>
         self._items = FirestoreQuery(
             collectionPath: "users/\(userId)/coffees"
         )
         self._viewModel = StateObject(
             wrappedValue: CoffeeListViewModel(userId: userId))
         
-        
+        // Customize list appearance
+        UITableView.appearance().separatorStyle = .none
+        UITableView.appearance().separatorColor = .clear
+        UITableView.appearance().backgroundColor = .clear
     }
     
     var body: some View {
-            NavigationView {
-                ZStack {
-                    Color.black.edgesIgnoringSafeArea(.all)
-                    
-                    VStack(spacing: 0) {
-                        ScrollView {
-                            LazyVStack(spacing: 32) {
-                                ForEach(items) { item in
-                                    CoffeeListItemView(item: item)
-                                        .swipeActions {
-                                            Button("Delete") {
-                                                viewModel.delete(id: item.id)
-                                            }
-                                            .tint(.red)
-                                        }
-                                }
+        NavigationView {
+            ZStack {
+                Color.black.edgesIgnoringSafeArea(.all)
+                
+                List {
+                    ForEach(items) { item in
+                        NavigationLink(destination: CoffeeDetailView(coffee: item)) {
+                            CoffeeListItemView(item: item)
+                        }
+                        .listRowInsets(EdgeInsets())
+                        .listRowBackground(Color.clear)
+                        .swipeActions {
+                            Button("Delete") {
+                                viewModel.delete(id: item.id)
                             }
-                            .padding()
+                            .tint(.red)
                         }
+                        
+                        // Spacer row
+                        Color.clear
+                            .frame(height: 12)
+                            .listRowBackground(Color.clear)
+                            .listRowInsets(EdgeInsets())
                     }
                 }
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .principal) {
-                        Text("Brew Log")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            viewModel.showingNewItemView = true
-                        }) {
-                            Image(systemName: "plus")
-                                .foregroundColor(.blue)
-                        }
-                    }
-                }
+                .listStyle(PlainListStyle())
+                .padding(.top, 20)
             }
-            .navigationViewStyle(StackNavigationViewStyle())
-            .sheet(isPresented: $viewModel.showingNewItemView) {
-                NewItemView(newItemPresented: $viewModel.showingNewItemView)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Brew Log")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        viewModel.showingNewItemView = true
+                    }) {
+                        Image(systemName: "plus")
+                            .foregroundColor(.blue)
+                    }
+                }
             }
         }
+        .sheet(isPresented: $viewModel.showingNewItemView) {
+            NewItemView(newItemPresented: $viewModel.showingNewItemView)
+        }
     }
+}
 
 struct CoffeeListView_Previews: PreviewProvider {
     static var previews: some View {

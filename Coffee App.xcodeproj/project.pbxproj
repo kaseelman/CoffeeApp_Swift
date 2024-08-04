@@ -17,6 +17,7 @@
 		18A81B552C5BE72000019DBB /* CoffeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A81B382C5BE72000019DBB /* CoffeeDetailView.swift */; };
 		18A81B5B2C5BE72000019DBB /* NewItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A81B3E2C5BE72000019DBB /* NewItemView.swift */; };
 		18A81B5C2C5BE72000019DBB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A81B3F2C5BE72000019DBB /* ProfileView.swift */; };
+		18A81B612C60323200019DBB /* EditItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A81B602C60323200019DBB /* EditItemView.swift */; };
 		DF3547CB2BD7EB4800BB47C9 /* Coffee_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3547CA2BD7EB4800BB47C9 /* Coffee_AppApp.swift */; };
 		DF3547CD2BD7EB4800BB47C9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3547CC2BD7EB4800BB47C9 /* MainView.swift */; };
 		DF3547CF2BD7EB4900BB47C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF3547CE2BD7EB4900BB47C9 /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 		18A81B402C5BE72000019DBB /* RegisterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		18A81B422C5BE72000019DBB /* Coffee_App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Coffee_App.entitlements; sourceTree = "<group>"; };
 		18A81B5E2C5BE74700019DBB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		18A81B602C60323200019DBB /* EditItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItemView.swift; sourceTree = "<group>"; };
 		DF3547C72BD7EB4800BB47C9 /* Coffee App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coffee App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF3547CA2BD7EB4800BB47C9 /* Coffee_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee_AppApp.swift; sourceTree = "<group>"; };
 		DF3547CC2BD7EB4800BB47C9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				DF3548192BD909F300BB47C9 /* CoffeeListItemView.swift */,
 				DF3548332BDA9FA900BB47C9 /* CoffeeListView.swift */,
 				DF3548352BDC08B400BB47C9 /* CoffeeDetailView.swift */,
+				18A81B602C60323200019DBB /* EditItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				DF3548182BD909CA00BB47C9 /* RegisterView.swift in Sources */,
 				DF3548222BD90A6100BB47C9 /* ProfileViewModel.swift in Sources */,
 				DF3548262BD90A7700BB47C9 /* NewItemViewModel.swift in Sources */,
+				18A81B612C60323200019DBB /* EditItemView.swift in Sources */,
 				DF35481C2BD90A2100BB47C9 /* User.swift in Sources */,
 				DF3548322BDA9BF300BB47C9 /* Extensions.swift in Sources */,
 				DF3547CB2BD7EB4800BB47C9 /* Coffee_AppApp.swift in Sources */,
