@@ -26,41 +26,50 @@ struct CoffeeListView: View {
     }
     
     var body: some View {
-        NavigationView{
-            VStack{
-                List(items) { item in
-                    CoffeeListItemView(item: item)
-                        .swipeActions {
-                            Button("Delete"){
-                                // Delete Coffee
-                                viewModel.delete(id: item.id)
+            NavigationView {
+                ZStack {
+                    Color.black.edgesIgnoringSafeArea(.all)
+                    
+                    VStack(spacing: 0) {
+                        ScrollView {
+                            LazyVStack(spacing: 32) {
+                                ForEach(items) { item in
+                                    CoffeeListItemView(item: item)
+                                        .swipeActions {
+                                            Button("Delete") {
+                                                viewModel.delete(id: item.id)
+                                            }
+                                            .tint(.red)
+                                        }
+                                }
                             }
-                            .tint(.red)
-                            
+                            .padding()
                         }
+                    }
                 }
-                .listStyle(PlainListStyle())
-                
-            }
-            .navigationTitle("Coffee Tracker")
-            .toolbar{
-                Button {
-                    // Action
-                    viewModel.showingNewItemView = true
-                
-                } label: {
-                    Image(systemName: "plus")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Brew Log")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            viewModel.showingNewItemView = true
+                        }) {
+                            Image(systemName: "plus")
+                                .foregroundColor(.blue)
+                        }
+                    }
                 }
             }
+            .navigationViewStyle(StackNavigationViewStyle())
             .sheet(isPresented: $viewModel.showingNewItemView) {
-                NewItemView(newItemPresented:
-                                $viewModel.showingNewItemView)
-                
-                }
-            
+                NewItemView(newItemPresented: $viewModel.showingNewItemView)
+            }
         }
     }
-}
 
 struct CoffeeListView_Previews: PreviewProvider {
     static var previews: some View {

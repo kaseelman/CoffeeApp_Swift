@@ -9,37 +9,46 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class NewItemViewModel: ObservableObject{
-    
+class NewItemViewModel: ObservableObject {
     @Published var title = ""
-    @Published var openDate = Date()
+    @Published var roasterName = ""
+    @Published var roastedDate = Date()
+    @Published var openDate = Date() // Added this line
+    @Published var grindSetting = ""
+    @Published var brewWeight = ""
+    @Published var coffeeYield = ""
+    @Published var brewTime = ""
     @Published var showAlert = false
     
-    
-    init () {}
+    init() {}
     
     func save() {
         guard canSave else {
             return
         }
         
-        // get current user ID
-        guard let uId = Auth.auth().currentUser?.uid else{
+        // Get current user ID
+        guard let uId = Auth.auth().currentUser?.uid else {
             return
         }
-        
-        
         
         // Create model
         let newId = UUID().uuidString
         let newItem = CoffeeListItem(
             id: newId,
             title: title,
-            openDate: openDate.timeIntervalSince1970,
+            roasterName: roasterName,
+            roastedDate: roastedDate.timeIntervalSince1970,
+            openDate: openDate.timeIntervalSince1970, // Added this line
+            grindSetting: grindSetting,
+            brewWeight: brewWeight,
+            coffeeYield: coffeeYield,
+            brewTime: brewTime,
             createdDate: Date().timeIntervalSince1970,
-            isDone: false)
+            isDone: false
+        )
         
-        // Save model to DB
+        // Save model to database
         let db = Firestore.firestore()
         
         db.collection("users")
@@ -47,14 +56,14 @@ class NewItemViewModel: ObservableObject{
             .collection("coffees")
             .document(newId)
             .setData(newItem.asDictionary())
-        
     }
     
     var canSave: Bool {
-        guard !title.trimmingCharacters(in: .whitespaces).isEmpty else{
-            return false
-        }
-        
-        return true
+        !title.trimmingCharacters(in: .whitespaces).isEmpty &&
+        !roasterName.trimmingCharacters(in: .whitespaces).isEmpty &&
+        !grindSetting.trimmingCharacters(in: .whitespaces).isEmpty &&
+        !brewWeight.trimmingCharacters(in: .whitespaces).isEmpty &&
+        !coffeeYield.trimmingCharacters(in: .whitespaces).isEmpty &&
+        !brewTime.trimmingCharacters(in: .whitespaces).isEmpty
     }
 }

@@ -8,13 +8,19 @@
 import Foundation
 
 struct CoffeeListItem: Codable, Identifiable {
-    let id:String
+    let id: String
     let title: String
-    let openDate: TimeInterval
+    let roasterName: String
+    let roastedDate: TimeInterval
+    let openDate: TimeInterval // Added this line
+    let grindSetting: String
+    let brewWeight: String
+    let coffeeYield: String
+    let brewTime: String
     let createdDate: TimeInterval
     var isDone: Bool
     
-    mutating func setDone(_ state:Bool) {
+    mutating func setDone(_ state: Bool) {
         isDone = state
     }
 }
