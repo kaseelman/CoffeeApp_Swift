@@ -1,21 +1,11 @@
-//
-//  CoffeeListItemView.swift
-//  Coffee App
-//
-//  Created by Kas Eelman on 24/04/2024.
-//
-
 import SwiftUI
 
 struct CoffeeListItemView: View {
     let item: CoffeeListItem
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 0)
-                .fill(Color(hex:"#1C1C1D"))
-            
-            VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(item.title)
                         .font(.system(size: 16, weight: .bold))
@@ -25,22 +15,25 @@ struct CoffeeListItemView: View {
                         .font(.system(size: 12, weight: .regular))
                         .foregroundColor(Color.white.opacity(0.7))
                 }
-                
                 Spacer()
-                
-                HStack(spacing: 16) {
-                    DateSection(title: "Opened On", date: item.openDate)
-                    DateSection(title: "Roasted On", date: item.roastedDate)
-                    Spacer()
-                    Circle()
-                        .fill(Color.green)
-                        .frame(width: 10, height: 10)
-                }
             }
-            .padding(16)
+            
+            HStack(spacing: 16) {
+                DateSection(title: "Roasted On", date: item.roastedDate)
+                DateSection(title: "Opened On", date: item.openDate)
+                Spacer()
+            }
         }
-        .frame(height: 120)
-        // Removed bottom padding here
+        .padding(.horizontal, 20)
+        .padding(.vertical, 16)
+        .background(Color(hex: "#1C1C1D"))
+        .overlay(
+            VStack {
+                Rectangle().fill(Color.gray.opacity(0.3)).frame(height: 1)
+                Spacer()
+                Rectangle().fill(Color.gray.opacity(0.3)).frame(height: 1)
+            }
+        )
     }
 }
 
@@ -77,7 +70,6 @@ struct CoffeeListItemView_Previews: PreviewProvider {
             isDone: false
         ))
         .previewLayout(.sizeThatFits)
-        .padding()
         .background(Color.black)
     }
 }

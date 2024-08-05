@@ -125,7 +125,7 @@ struct CustomDatePicker: View {
                     }
                     .padding()
                 }
-                .presentationDetents([.height(500)])
+                .presentationDetents([.height(400)])
                 .presentationBackground(Color(UIColor.systemBackground))
             } else {
                 // Fallback on earlier versions

@@ -1,21 +1,30 @@
-//
-//  MainViewModel.swift
-//  Coffee App
-//
-//  Created by Kas Eelman on 24/04/2024.
-//
-
 import Foundation
 import FirebaseAuth
 
-class MainViewModel: ObservableObject{
+class MainViewModel: ObservableObject {
     @Published var currentUserId: String = ""
     private var handler: AuthStateDidChangeListenerHandle?
     
     init() {
-        self.handler = Auth.auth().addStateDidChangeListener {[weak self] _ , user in
-            DispatchQueue.main.async{
+        self.handler = Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            DispatchQueue.main.async {
                 self?.currentUserId = user?.uid ?? ""
+                if user == nil {
+                    self?.signInAnonymously()
+                }
+            }
+        }
+    }
+    
+    private func signInAnonymously() {
+        Auth.auth().signInAnonymously { [weak self] authResult, error in
+            guard let strongSelf = self else { return }
+            if let error = error {
+                print("Error signing in anonymously: \(error.localizedDescription)")
+                return
+            }
+            DispatchQueue.main.async {
+                strongSelf.currentUserId = authResult?.user.uid ?? ""
             }
         }
     }

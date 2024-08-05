@@ -28,6 +28,7 @@ struct CoffeeDetailView: View {
                     // Dates and Age
                     HStack(spacing: 20) {
                         dateView(title: "Roasted On", date: viewModel.coffee.roastedDate)
+                        Spacer()
                         dateView(title: "Opened On", date: viewModel.coffee.openDate)
                         Spacer()
                         ageView(roastedDate: viewModel.coffee.roastedDate)
