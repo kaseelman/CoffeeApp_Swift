@@ -24,16 +24,11 @@ struct CoffeeListItemView: View {
                 Spacer()
             }
         }
-        .padding(.horizontal, 20)
-        .padding(.vertical, 16)
-        .background(Color(hex: "#1C1C1D"))
-        .overlay(
-            VStack {
-                Rectangle().fill(Color.gray.opacity(0.3)).frame(height: 1)
-                Spacer()
-                Rectangle().fill(Color.gray.opacity(0.3)).frame(height: 1)
-            }
-        )
+        .padding(.leading, 16)
+        .padding(.vertical, 20)
+        .background(Color(hex: "#1C1C1D").opacity(0.8))
+        .cornerRadius(15)
+        .shadow(color: Color.black.opacity(0.5), radius: 5, x: 0, y: 3)
     }
 }
 
