@@ -4,14 +4,16 @@ import FirebaseFirestoreSwift
 struct FavoritesView: View {
     @StateObject var viewModel: CoffeeListViewModel
     @FirestoreQuery var items: [CoffeeListItem]
+    @Binding var selectedTab: Int
     
-    init(userId: String) {
+    init(userId: String, selectedTab: Binding<Int>) {
         self._items = FirestoreQuery(
             collectionPath: "users/\(userId)/coffees",
             predicates: [.where("isFavorite", isEqualTo: true)]
         )
         self._viewModel = StateObject(
             wrappedValue: CoffeeListViewModel(userId: userId))
+        self._selectedTab = selectedTab
     }
     
     var body: some View {
@@ -57,6 +59,16 @@ struct FavoritesView: View {
                     Text("Favorites")
                         .font(.headline)
                         .foregroundColor(.white)
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        selectedTab = 0
+                    }) {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                            Text("Back")
+                        }
+                    }
                 }
             }
         }

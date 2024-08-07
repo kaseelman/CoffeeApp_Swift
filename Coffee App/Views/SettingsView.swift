@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @Environment(\.presentationMode) var presentationMode
+    @Binding var selectedTab: Int
     
     var body: some View {
         NavigationView {
@@ -13,13 +13,13 @@ struct SettingsView: View {
                         Text("Brew Log is a passion project designed and developed by a single person - me, Kas 👋")
                             .foregroundColor(.white)
                             .padding(.top, 20)
-                            .padding(.horizontal, 20)
-                            .padding(.trailing, 20)
+                            .padding(.leading, 30)
+                            .padding(.trailing, 65)
                         
-                        Text("I hope you find it useful and enjoy using the app. If you like it, please leave a review in the app store and share it with your fellow coffee enthusiasts ☕️")
+                        Text("I hope you find it useful and enjoy using the app. If you like it, please leave a review in the app store and share it with fellow coffee enthusiasts. Happy brewing! ☕️")
                             .foregroundColor(.white)
-                            .padding(.horizontal, 20)
-                            .padding(.trailing, 20)
+                            .padding(.leading, 30)
+                            .padding(.trailing, 70)
                         
                         VStack(spacing: 0) {
                             SettingsRow(icon: "star", text: "Rate")
@@ -38,18 +38,19 @@ struct SettingsView: View {
                 }
             }
             .navigationBarTitle("Settings", displayMode: .inline)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                HStack {
-                    Image(systemName: "chevron.left")
-                    Text("Back")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        selectedTab = 0
+                    }) {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                            Text("Back")
+                        }
+                    }
                 }
-                .foregroundColor(.blue)
-            })
+            }
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -94,7 +95,7 @@ struct SettingsRowDivider: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(selectedTab: .constant(2))
             .preferredColorScheme(.dark)
     }
 }
