@@ -62,7 +62,8 @@ struct CoffeeListItemView_Previews: PreviewProvider {
             coffeeYield: "36",
             brewTime: "35",
             createdDate: Date().timeIntervalSince1970,
-            isDone: false
+            isDone: false,
+            isFavorite: true
         ))
         .previewLayout(.sizeThatFits)
         .background(Color.black)

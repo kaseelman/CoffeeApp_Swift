@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		184B4DB72C6269AF00D7A9C6 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B4DB62C6269AF00D7A9C6 /* SwipeView.swift */; };
+		184B4DB92C62C5A100D7A9C6 /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B4DB82C62C5A000D7A9C6 /* FavouritesView.swift */; };
+		184B4DBB2C62C5B200D7A9C6 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184B4DBA2C62C5B100D7A9C6 /* FavouritesViewModel.swift */; };
 		18A81B202C5BDE4400019DBB /* CoffeeListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A81B1F2C5BDE4400019DBB /* CoffeeListItem.swift */; };
 		18A81B492C5BE72000019DBB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18A81B292C5BE72000019DBB /* GoogleService-Info.plist */; };
 		18A81B4A2C5BE72000019DBB /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A81B2A2C5BE72000019DBB /* Launch Screen.storyboard */; };
@@ -62,6 +64,8 @@
 
 /* Begin PBXFileReference section */
 		184B4DB62C6269AF00D7A9C6 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
+		184B4DB82C62C5A000D7A9C6 /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		184B4DBA2C62C5B100D7A9C6 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
 		18A81B1F2C5BDE4400019DBB /* CoffeeListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeListItem.swift; sourceTree = "<group>"; };
 		18A81B232C5BE72000019DBB /* CoffeeListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoffeeListItem.swift; sourceTree = "<group>"; };
 		18A81B242C5BE72000019DBB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 				18A81B602C60323200019DBB /* EditItemView.swift */,
 				18A81B6B2C621E6E00019DBB /* SVGIcon.swift */,
 				184B4DB62C6269AF00D7A9C6 /* SwipeView.swift */,
+				184B4DB82C62C5A000D7A9C6 /* FavouritesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				DF3548232BD90A6800BB47C9 /* CoffeeListViewModel.swift */,
 				DF35482B2BD90A9000BB47C9 /* CoffeeListItemViewModel.swift */,
 				DF3548372BDC08C000BB47C9 /* CoffeeDetailViewModel.swift */,
+				184B4DBA2C62C5B100D7A9C6 /* FavouritesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -479,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184B4DBB2C62C5B200D7A9C6 /* FavouritesViewModel.swift in Sources */,
 				184B4DB72C6269AF00D7A9C6 /* SwipeView.swift in Sources */,
 				DF35482C2BD90A9000BB47C9 /* CoffeeListItemViewModel.swift in Sources */,
 				18A81B4E2C5BE72000019DBB /* CoffeeListViewModel.swift in Sources */,
@@ -498,6 +505,7 @@
 				DF3548322BDA9BF300BB47C9 /* Extensions.swift in Sources */,
 				DF3547CB2BD7EB4800BB47C9 /* Coffee_AppApp.swift in Sources */,
 				18A81B5B2C5BE72000019DBB /* NewItemView.swift in Sources */,
+				184B4DB92C62C5A100D7A9C6 /* FavouritesView.swift in Sources */,
 				DF3548202BD90A5A00BB47C9 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,6 +666,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Coffee App/Preview Content\"";
+				DEVELOPMENT_TEAM = 92NXDYQH25;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -699,6 +708,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Coffee App/Preview Content\"";
+				DEVELOPMENT_TEAM = 92NXDYQH25;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

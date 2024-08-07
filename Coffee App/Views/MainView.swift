@@ -20,13 +20,20 @@ struct MainView: View {
         TabView {
             CoffeeListView(userId: viewModel.currentUserId)
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("Brew Log", systemImage: "list.bullet")
                 }
+            
+            FavoritesView(userId: viewModel.currentUserId)
+                .tabItem {
+                    Label("Favorites", systemImage: "star.fill")
+                }
+            
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
         }
+        .ignoresSafeArea(edges: .bottom)
     }
 }
 

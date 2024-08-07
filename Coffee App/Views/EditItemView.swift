@@ -128,7 +128,8 @@ class EditItemViewModel: ObservableObject {
             coffeeYield: coffeeYield,
             brewTime: brewTime,
             createdDate: Date().timeIntervalSince1970,
-            isDone: false
+            isDone: false,
+            isFavorite: true
         )
         
         // Update Firestore here

@@ -143,7 +143,8 @@ struct CoffeeDetailView: View {
                     coffeeYield: "36",
                     brewTime: "30s",
                     createdDate: Date().timeIntervalSince1970,
-                    isDone: false
+                    isDone: false,
+                    isFavorite: true
                 ))
             }
             .preferredColorScheme(.dark)

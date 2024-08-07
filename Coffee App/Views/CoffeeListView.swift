@@ -67,6 +67,15 @@ struct CoffeeListView: View {
                                 }
                                 .tint(selectedTab == 0 ? .green : .blue)
                             }
+                            .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                // Favorite button
+                                Button {
+                                    viewModel.toggleFavorite(item: item)
+                                } label: {
+                                    Label(item.isFavorite ? "Unfavorite" : "Favorite", systemImage: item.isFavorite ? "star.slash" : "star.fill")
+                                }
+                                .tint(.yellow)
+                            }
                         }
                     }
                     .listStyle(PlainListStyle())

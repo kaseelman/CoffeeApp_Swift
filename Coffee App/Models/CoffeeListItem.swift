@@ -19,8 +19,13 @@ struct CoffeeListItem: Codable, Identifiable {
     let brewTime: String
     let createdDate: TimeInterval
     var isDone: Bool
+    var isFavorite: Bool // New property
     
     mutating func setDone(_ state: Bool) {
         isDone = state
     }
+    
+    mutating func setFavorite(_ state: Bool) { 
+            isFavorite = state
+        }
 }

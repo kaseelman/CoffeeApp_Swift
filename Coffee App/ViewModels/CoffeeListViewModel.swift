@@ -42,12 +42,22 @@ class CoffeeListViewModel: ObservableObject {
             .updateData(["isDone": !coffee.isDone])
     }
     
+    func toggleFavorite(item: CoffeeListItem) {
+        let db = Firestore.firestore()
+        
+        db.collection("users")
+            .document(userId)
+            .collection("coffees")
+            .document(item.id)
+            .updateData(["isFavorite": !item.isFavorite])
+    }
+    
     func filteredItems(_ items: [CoffeeListItem], selectedTab: Int) -> [CoffeeListItem] {
         items.filter { item in
             let matchesTab = selectedTab == 0 ? !item.isDone : item.isDone
             let matchesSearch = self.searchText.isEmpty ||
                 item.title.lowercased().contains(self.searchText.lowercased()) ||
-            (item.roasterName.lowercased().contains(self.searchText.lowercased()) ?? false)
+            (item.roasterName.lowercased().contains(self.searchText.lowercased()))
             return matchesTab && matchesSearch
         }
     }

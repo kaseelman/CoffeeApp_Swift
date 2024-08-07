@@ -45,7 +45,8 @@ class NewItemViewModel: ObservableObject {
             coffeeYield: coffeeYield,
             brewTime: brewTime,
             createdDate: Date().timeIntervalSince1970,
-            isDone: false
+            isDone: false,
+            isFavorite: false
         )
         
         // Save model to database
