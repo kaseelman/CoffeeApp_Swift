@@ -7,15 +7,12 @@ struct CoffeeListView: View {
     @State private var selectedTab: Int = 0
     
     init(userId: String) {
-        // Initialize FirestoreQuery with the correct path
         self._items = FirestoreQuery(
             collectionPath: "users/\(userId)/coffees"
         )
-        // Initialize the view model
         self._viewModel = StateObject(
             wrappedValue: CoffeeListViewModel(userId: userId))
         
-        // Customize list appearance
         UITableView.appearance().separatorStyle = .none
         UITableView.appearance().separatorColor = .clear
         UITableView.appearance().backgroundColor = .clear
@@ -27,59 +24,57 @@ struct CoffeeListView: View {
                 Color.black.edgesIgnoringSafeArea(.all)
                 
                 VStack(spacing: 0) {
-                    // Search bar
                     searchBar
                         .padding(.top, 10)
                         .padding(.horizontal)
                     
-                    // Custom segmented control
                     customSegmentedControl
                         .padding(.top, 18)
                         .padding(.bottom, 22)
                     
-                    // List of coffee items
-                    List {
-                        ForEach(filteredItems) { item in
-                            NavigationLink(destination: CoffeeDetailView(coffee: item)) {
-                                CoffeeListItemView(item: item)
-                            }
-                            .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
-                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                                // Delete button
-                                Button {
-                                    viewModel.delete(id: item.id)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
+                    if filteredItems.isEmpty {
+                        emptyStateView
+                    } else {
+                        List {
+                            ForEach(filteredItems) { item in
+                                NavigationLink(destination: CoffeeDetailView(coffee: item)) {
+                                    CoffeeListItemView(item: item)
                                 }
-                                .tint(.red)
-                                
-                                // Toggle status button
-                                Button {
-                                    viewModel.toggleCoffeeStatus(coffee: item)
-                                } label: {
-                                    if selectedTab == 0 {
-                                        Label("Finish", systemImage: "checkmark.circle")
-                                    } else {
-                                        Label("Re-open", systemImage: "arrow.counterclockwise.circle")
+                                .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                    Button {
+                                        viewModel.delete(id: item.id)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
                                     }
+                                    .tint(.red)
+                                    
+                                    Button {
+                                        viewModel.toggleCoffeeStatus(coffee: item)
+                                    } label: {
+                                        if selectedTab == 0 {
+                                            Label("Finish", systemImage: "checkmark.circle")
+                                        } else {
+                                            Label("Re-open", systemImage: "arrow.counterclockwise.circle")
+                                        }
+                                    }
+                                    .tint(selectedTab == 0 ? .green : .blue)
                                 }
-                                .tint(selectedTab == 0 ? .green : .blue)
-                            }
-                            .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                                // Favorite button
-                                Button {
-                                    viewModel.toggleFavorite(item: item)
-                                } label: {
-                                    Label(item.isFavorite ? "Unfavorite" : "Favorite", systemImage: item.isFavorite ? "star.slash" : "star.fill")
+                                .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                    Button {
+                                        viewModel.toggleFavorite(item: item)
+                                    } label: {
+                                        Label(item.isFavorite ? "Unfavorite" : "Favorite", systemImage: item.isFavorite ? "star.slash" : "star.fill")
+                                    }
+                                    .tint(.yellow)
                                 }
-                                .tint(.yellow)
                             }
                         }
+                        .listStyle(PlainListStyle())
+                        .background(Color.black)
                     }
-                    .listStyle(PlainListStyle())
-                    .background(Color.black)
                 }
             }
             .background(Color.black)
@@ -114,7 +109,27 @@ struct CoffeeListView: View {
         }
     }
     
-    // MARK: - Search Bar
+    private var emptyStateView: some View {
+        GeometryReader { geometry in
+            VStack {
+                Spacer()
+                Image("EmptyState")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 250, height: 250)
+                
+                Text("Nothing to see here, add a coffee to get started")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                Spacer()
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height)
+        }
+        .background(Color.black)
+    }
+    
     private var searchBar: some View {
         HStack {
             Image(systemName: "magnifyingglass")
@@ -143,65 +158,62 @@ struct CoffeeListView: View {
         .cornerRadius(10)
     }
 
-    // MARK: - Custom Segmented Control
     private var customSegmentedControl: some View {
-            VStack(spacing: 0) {
-                HStack(spacing: 40) {
-                    ForEach(0..<2) { index in
-                        VStack(spacing: 4) {
-                            HStack(spacing: 8) {
-                                Text(index == 0 ? "Opened" : "Finished")
-                                    .font(.headline)
-                                    .foregroundColor(selectedTab == index ? .white : .gray)
-                                
-                                CountIndicator(
-                                    count: viewModel.countItems(items, isDone: index == 1),
-                                    isSelected: selectedTab == index
-                                )
-                            }
-                            .padding(.horizontal, 0)
-                            .frame(height: 30)
+        VStack(spacing: 0) {
+            HStack(spacing: 40) {
+                ForEach(0..<2) { index in
+                    VStack(spacing: 4) {
+                        HStack(spacing: 8) {
+                            Text(index == 0 ? "Opened" : "Finished")
+                                .font(.headline)
+                                .foregroundColor(selectedTab == index ? .white : .gray)
                             
-                            ZStack {
-                                Rectangle()
-                                    .fill(Color.clear)
-                                    .frame(height: 6)
-                                
-                                if selectedTab == index {
-                                    Rectangle()
-                                        .fill(Color.blue)
-                                        .frame(height: 2)
-                                        .padding(.top, 4)
-                                        .matchedGeometryEffect(id: "underline", in: namespace)
-                                }
-                            }
+                            CountIndicator(
+                                count: viewModel.countItems(items, isDone: index == 1),
+                                isSelected: selectedTab == index
+                            )
                         }
-                        .frame(minWidth: 100)
-                        .onTapGesture {
-                            withAnimation {
-                                selectedTab = index
+                        .padding(.horizontal, 0)
+                        .frame(height: 30)
+                        
+                        ZStack {
+                            Rectangle()
+                                .fill(Color.clear)
+                                .frame(height: 6)
+                            
+                            if selectedTab == index {
+                                Rectangle()
+                                    .fill(Color.blue)
+                                    .frame(height: 2)
+                                    .padding(.top, 4)
+                                    .matchedGeometryEffect(id: "underline", in: namespace)
                             }
                         }
                     }
-                    Spacer()
+                    .frame(minWidth: 100)
+                    .onTapGesture {
+                        withAnimation {
+                            selectedTab = index
+                        }
+                    }
                 }
-                .padding(.leading, 20)
-                
-                Rectangle()
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(height: 1)
+                Spacer()
             }
+            .padding(.leading, 20)
+            
+            Rectangle()
+                .fill(Color.gray.opacity(0.2))
+                .frame(height: 1)
         }
+    }
     
     @Namespace private var namespace
     
-    // MARK: - Filtered Items
     private var filteredItems: [CoffeeListItem] {
         viewModel.filteredItems(items, selectedTab: selectedTab)
     }
 }
 
-// MARK: - Count Indicator
 struct CountIndicator: View {
     let count: Int
     let isSelected: Bool
@@ -217,7 +229,6 @@ struct CountIndicator: View {
     }
 }
 
-// MARK: - Preview
 struct CoffeeListView_Previews: PreviewProvider {
     static var previews: some View {
         CoffeeListView(userId: "nxSnz4NiiUT7qwUV50uR18hKX0L2")

@@ -1,64 +1,31 @@
-//
-//  NewItemView.swift
-//  Coffee App
-//
-//  Created by Kas Eelman on 24/04/2024.
-//
-
 import SwiftUI
 
 struct NewItemView: View {
     @StateObject var viewModel = NewItemViewModel()
     @Binding var newItemPresented: Bool
     @Environment(\.dismiss) private var dismiss
-    @FocusState private var focusedField: Field?
-    
-    enum Field: Hashable {
-            case coffeeName, roasterName, grindSetting, brewWeight, coffeeYield, brewTime
-        }
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color(hex: "#1C1C1D").edgesIgnoringSafeArea(.all)
+            List {
+                Section(header: Text("COFFEE DETAILS").foregroundColor(.gray)) {
+                    CustomInputField(title: "Coffee Name", text: $viewModel.title, placeholder: "Name")
+                    CustomInputField(title: "Roaster Name", text: $viewModel.roasterName, placeholder: "Roaster")
+                }
                 
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        Text("Coffee Details")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                        
-                        // Coffee Name
-                        InputField(title: "Coffee Name", text: $viewModel.title)
-                            .focused($focusedField, equals: .coffeeName)
-                        // Roaster Name
-                        InputField(title: "Roaster Name", text: $viewModel.roasterName)
-                            
-                        // Roasted Date
-                        CustomDatePicker(title: "Roasted Date", selection: $viewModel.roastedDate)
-                            .focused($focusedField, equals: .roasterName)
-                        // Open Date
-                        CustomDatePicker(title: "Open Date", selection: $viewModel.openDate)
-                        
-                        Text("Brew Information")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                        
-                        // Grind Setting
-                        InputField(title: "Grind Setting", text: $viewModel.grindSetting)
-                            .focused($focusedField, equals: .grindSetting)
-                        // Brew Weight
-                        InputField(title: "Brew Weight (g)", text: $viewModel.brewWeight)
-                            .focused($focusedField, equals: .brewWeight)
-                        // Coffee Yield
-                        InputField(title: "Coffee Yield (g)", text: $viewModel.coffeeYield)
-                            .focused($focusedField, equals: .coffeeYield)
-                        // Brew Time
-                        InputField(title: "Brew Time", text: $viewModel.brewTime)
-                    }
-                    .padding()
+                Section(header: Text("DATES").foregroundColor(.gray)) {
+                    CustomDatePicker(title: "Roasted Date", selection: $viewModel.roastedDate)
+                    CustomDatePicker(title: "Open Date", selection: $viewModel.openDate)
+                }
+                
+                Section(header: Text("BREW INFORMATION").foregroundColor(.gray)) {
+                    CustomInputField(title: "Grind Setting", text: $viewModel.grindSetting, placeholder: "settings")
+                    CustomInputField(title: "Brew Weight", text: $viewModel.brewWeight, placeholder: "grams")
+                    CustomInputField(title: "Coffee Yield", text: $viewModel.coffeeYield, placeholder: "grams")
+                    CustomInputField(title: "Brew Time", text: $viewModel.brewTime, placeholder: "seconds")
                 }
             }
+            .listStyle(.insetGrouped)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -85,79 +52,42 @@ struct NewItemView: View {
                 }
             }
         }
+        .background(Color(hex: "1C1C1D")) // Sheet colour
+        .edgesIgnoringSafeArea(.all) 
+        .environment(\.colorScheme, .dark)
         .alert(isPresented: $viewModel.showAlert) {
             Alert(title: Text("Error"), message: Text("Please fill in all fields"))
         }
     }
 }
 
-struct CustomDatePicker: View {
+struct CustomInputField: View {
     let title: String
-    @Binding var selection: Date
-    @State private var showPicker = false
+    @Binding var text: String
+    let placeholder: String
     
     var body: some View {
-        VStack(alignment: .leading) {
+        HStack {
             Text(title)
-                .foregroundColor(Color.gray.opacity(0.7))
-            
-            Button(action: {
-                showPicker = true
-            }) {
-                Text(selection, style: .date)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                    .background(Color(hex: "3E3E40"))
-                    .cornerRadius(8)
-            }
-        }
-        .sheet(isPresented: $showPicker) {
-            if #available(iOS 16.4, *) {
-                VStack {
-                    DatePicker("", selection: $selection, displayedComponents: .date)
-                        .datePickerStyle(GraphicalDatePickerStyle())
-                        .accentColor(.blue)
-                        .padding()
-                    
-                    Button("Done") {
-                        showPicker = false
-                    }
-                    .padding()
-                }
-                .presentationDetents([.height(400)])
-                .presentationBackground(Color(UIColor.systemBackground))
-            } else {
-                // Fallback on earlier versions
-            }
+                .foregroundColor(.white)
+            Spacer()
+            TextField(placeholder, text: $text)
+                .multilineTextAlignment(.trailing)
+                .foregroundColor(.gray)
         }
     }
 }
 
-struct InputField: View {
-    let title: String
-    @Binding var text: String
-    @FocusState private var isFocused: Bool
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(title)
-                .foregroundColor(Color(hex: "88888E")) // New color for the label
-            
-            TextField("", text: $text)
-                .padding()
-                .background(Color(hex: "3E3E40"))
-                .cornerRadius(8)
-                .foregroundColor(.white)
-                .accentColor(.blue)
-                .focused($isFocused)
-                .onTapGesture {
-                    isFocused = true
-                }
-        }
+
+struct NewItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewItemView(newItemPresented: .constant(true))
     }
 }
-// Extension to create a Color from a hex string
+
+
+// Hex Color function
+
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
@@ -182,12 +112,5 @@ extension Color {
             blue:  Double(b) / 255,
             opacity: Double(a) / 255
         )
-    }
-}
-
-struct NewItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        NewItemView(newItemPresented: .constant(true))
-            .preferredColorScheme(.dark)
     }
 }

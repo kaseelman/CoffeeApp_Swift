@@ -4,11 +4,6 @@ struct EditItemView: View {
     @StateObject private var viewModel: EditItemViewModel
     @Binding var isPresented: Bool
     @EnvironmentObject var detailViewModel: CoffeeDetailViewModel
-    @FocusState private var focusedField: Field?
-    
-    enum Field: Hashable {
-        case coffeeName, roasterName, grindSetting, brewWeight, coffeeYield, brewTime
-    }
     
     init(coffee: CoffeeListItem, isPresented: Binding<Bool>) {
         self._viewModel = StateObject(wrappedValue: EditItemViewModel(coffee: coffee))
@@ -17,38 +12,25 @@ struct EditItemView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                Color(hex: "#1C1C1D").edgesIgnoringSafeArea(.all)
+            List {
+                Section(header: Text("COFFEE DETAILS").foregroundColor(.gray)) {
+                    CustomInputField(title: "Coffee Name", text: $viewModel.title, placeholder: "Name")
+                    CustomInputField(title: "Roaster Name", text: $viewModel.roasterName, placeholder: "Roaster")
+                }
                 
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        Text("Coffee Details")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                        
-                        InputField(title: "Coffee Name", text: $viewModel.title)
-                            .focused($focusedField, equals: .coffeeName)
-                        InputField(title: "Roaster Name", text: $viewModel.roasterName)
-                            .focused($focusedField, equals: .roasterName)
-                        CustomDatePicker(title: "Roasted Date", selection: $viewModel.roastedDate)
-                        CustomDatePicker(title: "Open Date", selection: $viewModel.openDate)
-                        
-                        Text("Brew Information")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                        
-                        InputField(title: "Grind Setting", text: $viewModel.grindSetting)
-                            .focused($focusedField, equals: .grindSetting)
-                        InputField(title: "Brew Weight (g)", text: $viewModel.brewWeight)
-                            .focused($focusedField, equals: .brewWeight)
-                        InputField(title: "Coffee Yield (g)", text: $viewModel.coffeeYield)
-                            .focused($focusedField, equals: .coffeeYield)
-                        InputField(title: "Brew Time", text: $viewModel.brewTime)
-                            .focused($focusedField, equals: .brewTime)
-                    }
-                    .padding()
+                Section(header: Text("DATES").foregroundColor(.gray)) {
+                    CustomDatePicker(title: "Roasted Date", selection: $viewModel.roastedDate)
+                    CustomDatePicker(title: "Open Date", selection: $viewModel.openDate)
+                }
+                
+                Section(header: Text("BREW INFORMATION").foregroundColor(.gray)) {
+                    CustomInputField(title: "Grind Setting", text: $viewModel.grindSetting, placeholder: "settings")
+                    CustomInputField(title: "Brew Weight", text: $viewModel.brewWeight, placeholder: "grams")
+                    CustomInputField(title: "Coffee Yield", text: $viewModel.coffeeYield, placeholder: "grams")
+                    CustomInputField(title: "Brew Time", text: $viewModel.brewTime, placeholder: "seconds")
                 }
             }
+            .listStyle(.insetGrouped)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal) {
@@ -76,11 +58,58 @@ struct EditItemView: View {
                 }
             }
         }
+        .background(Color(hex: "1C1C1D")) // Sheet colour
+        .edgesIgnoringSafeArea(.all)
+        .environment(\.colorScheme, .dark)
         .alert(isPresented: $viewModel.showAlert) {
             Alert(title: Text("Error"), message: Text("Please fill in all fields"))
         }
     }
 }
+
+
+struct CustomDatePicker: View {
+    let title: String
+    @Binding var selection: Date
+    @State private var showPicker = false
+    
+    var body: some View {
+        HStack {
+            Text(title)
+                .foregroundColor(.white)
+            Spacer()
+            Text(selection, style: .date)
+                .foregroundColor(.gray)
+        }
+        .onTapGesture {
+            showPicker = true
+        }
+        .sheet(isPresented: $showPicker) {
+            if #available(iOS 16.4, *) {
+                VStack {
+                    DatePicker("", selection: $selection, displayedComponents: .date)
+                        .datePickerStyle(GraphicalDatePickerStyle())
+                        .colorScheme(.dark)
+                        .padding()
+                    
+                    Button("Done") {
+                        showPicker = false
+                    }
+                    .padding()
+                    .foregroundColor(.blue)
+                }
+                .presentationDetents([.height(400)])
+                .presentationBackground(Color(UIColor.systemBackground))
+                .preferredColorScheme(.dark)
+                .background(Color.black.edgesIgnoringSafeArea(.all))
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
+}
+
+// Updating the record in Firebase
 
 class EditItemViewModel: ObservableObject {
     @Published var title: String
@@ -135,5 +164,30 @@ class EditItemViewModel: ObservableObject {
         // Update Firestore here
         
         return updatedCoffee
+    }
+}
+
+// Preview code
+// Preview code
+struct EditItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        let sampleCoffee = CoffeeListItem(
+            id: "123",
+            title: "Sample Coffee",
+            roasterName: "Sample Roaster",
+            roastedDate: Date().timeIntervalSince1970,
+            openDate: Date().timeIntervalSince1970,
+            grindSetting: "9",
+            brewWeight: "20g",
+            coffeeYield: "40g",
+            brewTime: "30s",
+            createdDate: Date().timeIntervalSince1970,
+            isDone: false,
+            isFavorite: false
+        )
+        
+        return EditItemView(coffee: sampleCoffee, isPresented: .constant(true))
+            .environmentObject(CoffeeDetailViewModel(coffee: sampleCoffee))
+            .preferredColorScheme(.dark)
     }
 }
